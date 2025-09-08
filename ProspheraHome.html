@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Company</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .ratio-16-9 { aspect-ratio: 16 / 9; }
+    .slide { transition: opacity 1s ease-in-out; }
+    #lightbox { display: none; }
+    #lightbox.active { display: flex; }
+     /* Floating Buttons */
+    .float-btn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 26px;
+      color: #fff;
+      line-height: 55px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .float-btn:hover { transform: scale(1.1); }
+    .whatsapp { background-color: #25d366; }
+    .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .tiktok { background-color: #000; }
+
+    .float-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Navbar -->
+<header class="fixed w-full bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-bold text-green-600">Prosphera Home</a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex space-x-8">
+      <a href="#home" class="hover:text-green-600">Home</a>
+      <a href="#about" class="hover:text-green-600">About</a>
+      <a href="#vision" class="hover:text-green-600">Vision</a>
+      <a href="#team" class="hover:text-green-600">Team</a>
+      <a href="#projects" class="hover:text-green-600">Projects</a>
+      <a href="#contact" class="hover:text-green-600">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="menu" class="hidden md:hidden bg-white shadow-lg">
+    <nav class="flex flex-col items-center space-y-4 py-6">
+      <a href="#home" class="hover:text-green-600">Home</a>
+      <a href="#about" class="hover:text-green-600">About</a>
+      <a href="#vision" class="hover:text-green-600">Vision</a>
+      <a href="#team" class="hover:text-green-600">Team</a>
+      <a href="#projects" class="hover:text-green-600">Projects</a>
+      <a href="#contact" class="hover:text-green-600">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Toggle mobile menu
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+
+  <!-- Hero Slideshow -->
+  <section id="home" class="relative h-screen w-full overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="slideshow relative w-full h-full">
+        <div class="slide absolute inset-0 opacity-100">
+          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="slide absolute inset-0 opacity-0">
+          <img src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d?auto=format&fit=crop&w=1600&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="slide absolute inset-0 opacity-0">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white">
+            <img src="C:/Users/Home/Documents/ProspheraHome/assets/logo.png" 
+         alt="Prosphera Home Logo" 
+         class="mx-auto mb-6 w-48 md:w-64">
+      <h2 class="text-5xl font-bold mb-4">Designing the Future</h2>
+      <p class="text-lg">Innovative Architecture for a Modern World</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-green-600 mb-6">About Us</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Linear Contractor is an independent company as a Contractor Interior & Architectural. 
+        It started in 2007 by Niken Wulandari, who has a background from an Interior Design Bachelor Degree, and Roni, who has a background and experience in Architectural.
+      </p>
+      <p class="text-lg text-gray-700 leading-relaxed mt-4">
+        The company began as a small business offering consultancy services and has since worked with various interior designers and architects in Indonesia. 
+        It has expanded its service into the production as an Interior & Architectural build Contractor. 
+        The company has experience as a contractor in residential, retail, and other projects, primarily in Jakarta and some other locations in Indonesia.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section id="vision" class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold text-green-600 mb-6">Our Vision</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Having the best quality of service for ultimate satisfaction of our clients.
+      </p>
+    </div>
+  </section>
+
+<!-- Team Section -->
+<section id="team" class="py-20 bg-gray-100">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-green-600 mb-12">Our Team</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      
+      <!-- Card 1 -->
+      <div class="team-card opacity-0 translate-y-10">
+        <div class="flip-card shadow-grow">
+          <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front bg-white p-6 rounded-lg">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                   class="w-32 h-32 rounded-full mx-auto mb-4 shadow-md">
+              <h3 class="text-xl font-semibold">Niken</h3>
+              <p class="text-gray-600">CEO & Founder</p>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back bg-green-600 text-white p-6 rounded-lg flex flex-col justify-center">
+              <h3 class="text-xl font-bold">Niken</h3>
+              <p class="mt-2">Founder with background in Interior Design. Passionate in building sustainable concepts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="team-card opacity-0 translate-y-10">
+        <div class="flip-card shadow-grow">
+          <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front bg-white p-6 rounded-lg">
+              <img src="https://randomuser.me/api/portraits/men/44.jpg" 
+                   class="w-32 h-32 rounded-full mx-auto mb-4 shadow-md">
+              <h3 class="text-xl font-semibold">Roni</h3>
+              <p class="text-gray-600">Lead Architect</p>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back bg-green-600 text-white p-6 rounded-lg flex flex-col justify-center">
+              <h3 class="text-xl font-bold">Roni</h3>
+              <p class="mt-2">Architect with years of experience in commercial and residential projects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="team-card opacity-0 translate-y-10">
+        <div class="flip-card shadow-grow">
+          <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front bg-white p-6 rounded-lg">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" 
+                   class="w-32 h-32 rounded-full mx-auto mb-4 shadow-md">
+              <h3 class="text-xl font-semibold">Udin</h3>
+              <p class="text-gray-600">Project Manager</p>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back bg-green-600 text-white p-6 rounded-lg flex flex-col justify-center">
+              <h3 class="text-xl font-bold">Udin</h3>
+              <p class="mt-2">Expert in project management and execution with focus on client satisfaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CSS -->
+<style>
+  
+/* Flip Card */
+.flip-card { perspective: 1000px; }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 380px; /* <-- tinggi fix */
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;   /* <-- isi full */
+  backface-visibility: hidden;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Glow effect */
+.shadow-grow {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.shadow-grow:hover {
+  box-shadow: 
+    0 12px 28px rgba(0,0,0,0.25),
+    0 0 20px rgba(34,197,94,0.4),
+    0 0 40px rgba(34,197,94,0.3);
+  transform: scale(1.05);
+}
+
+/* Fade-in + lift */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Extra spacing biar ga tabrakan */
+#team {
+  margin-bottom: 100px; 
+}
+
+</style>
+
+<!-- Script: Staggered Fade-In -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".team-card");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add("fade-in");
+          }, index * 200); // delay tiap card
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  observer.observe(document.querySelector("#team"));
+});
+
+</script>
+
+<!-- Clients Section (3-row horizontal marquee) -->
+<!-- Clients Section -->
+<section id="clients" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-green-600 mb-10">Our Clients</h2>
+
+    <!-- Row 1 (Right) -->
+    <div class="marquee reverse mb-6 fade-row">
+      <div class="marquee-track">
+        <div class="client-pill">Buccheri</div>
+        <div class="client-pill">Green Living Store</div>
+        <div class="client-pill">Sampoerna School of Education</div>
+        <div class="client-pill">Fitness First</div>
+        <!-- duplicate set -->
+        <div class="client-pill">Buccheri</div>
+        <div class="client-pill">Green Living Store</div>
+        <div class="client-pill">Sampoerna School of Education</div>
+        <div class="client-pill">Fitness First</div>
+         <!-- duplicate set -->
+        <div class="client-pill">Buccheri</div>
+        <div class="client-pill">Green Living Store</div>
+        <div class="client-pill">Sampoerna School of Education</div>
+        <div class="client-pill">Fitness First</div>
+      </div>
+    </div>
+
+    <!-- Row 2 (Left) -->
+    <div class="marquee mb-6 fade-row">
+      <div class="marquee-track">
+        <div class="client-pill">Wall's Factory</div>
+        <div class="client-pill">Bateeq</div>
+        <div class="client-pill">Barber Shop ASGAR</div>
+        <div class="client-pill">Honey Creme</div>
+        <div class="client-pill">Nawilis</div>
+        <div class="client-pill">CHIEF</div>
+        <!-- duplicate set -->
+        <div class="client-pill">Wall's Factory</div>
+        <div class="client-pill">Bateeq</div>
+        <div class="client-pill">Barber Shop ASGAR</div>
+        <div class="client-pill">Honey Creme</div>
+        <div class="client-pill">Nawilis</div>
+        <div class="client-pill">CHIEF</div>
+      </div>
+    </div>
+
+    <!-- Row 3 (Right) -->
+    <div class="marquee reverse fade-row">
+      <div class="marquee-track">
+        <div class="client-pill">Les Femmes</div>
+        <div class="client-pill">KidZania</div>
+        <div class="client-pill">Naughty</div>
+        <div class="client-pill">Hospital Buah Hati Ciputat</div>
+        <!-- duplicate set -->
+        <div class="client-pill">Les Femmes</div>
+        <div class="client-pill">KidZania</div>
+        <div class="client-pill">Naughty</div>
+        <div class="client-pill">Hospital Buah Hati Ciputat</div>
+        <!-- duplicate set -->
+        <div class="client-pill">Les Femmes</div>
+        <div class="client-pill">KidZania</div>
+        <div class="client-pill">Naughty</div>
+        <div class="client-pill">Hospital Buah Hati Ciputat</div>
+        <!-- duplicate set -->
+        <div class="client-pill">Les Femmes</div>
+        <div class="client-pill">KidZania</div>
+        <div class="client-pill">Naughty</div>
+        <div class="client-pill">Hospital Buah Hati Ciputat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Style -->
+<style>
+.client-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    margin-right: 1.5rem;
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    font-weight: 600;
+    color: #374151; /* gray-700 */
+    white-space: nowrap;
+    font-size: 1.05rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* Hover effect */
+  .client-pill:hover {
+    background: #16a34a; /* green-600 */
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(22, 163, 74, 0.3);
+  }
+
+  /* Click effect */
+  .client-pill:active {
+    transform: scale(0.92);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+  }
+
+/* Marquee base */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  animation: scroll-left 120s linear infinite;
+  will-change: transform;
+}
+.marquee.reverse .marquee-track {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+  cursor: grab;
+}
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Fade effect */
+.fade-row {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.fade-row.visible {
+  opacity: 1;
+}
+</style>
+
+<!-- Script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible"); // fade out when leaving
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.fade-row').forEach(el => observer.observe(el));
+});
+</script>
+
+
+
+<!-- Projects (Album Style) -->
+<section id="projects" class="py-20 bg-gray-50">
+  <h2 class="text-3xl font-bold text-center text-green-600 mb-12">Our Projects</h2>
+
+  <!-- Album Grid -->
+  <div id="album-view" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-6">
+    <!-- 14 album cards -->
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="buccheri">
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Buccheri</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="greenliving">
+      <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Green Living Store</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="sampoerna">
+      <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Sampoerna School</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="fitnessfirst">
+      <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Fitness First</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="walls">
+      <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Wall's Factory</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="bateeq">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Bateeq</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="asgar">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Barber Shop ASGAR</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="honeycreme">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Honey Creme</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="nawilis">
+      <img src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Nawilis</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="chief">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">CHIEF</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="lesfemmes">
+      <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Les Femmes</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="kidzania">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">KidZania</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="naughty">
+      <img src="https://images.unsplash.com/photo-1581291519195-ef11498d1cf5?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Naughty</div>
+    </div>
+    <div class="album-card bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer" data-album="buahhati">
+      <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80" class="w-full h-40 object-cover">
+      <div class="p-3 text-center font-semibold">Hospital Buah Hati Ciputat</div>
+    </div>
+  </div>
+
+  <!-- Photos in Album -->
+  <div id="photos-view" class="hidden max-w-7xl mx-auto px-6">
+    <button id="backBtn" class="mb-6 px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700">&larr; Back to Albums</button>
+    <div id="photo-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6"></div>
+  </div>
+</section>
+
+<!-- Album-specific Lightbox (unique IDs so it doesn't collide with other lightboxes) -->
+<div id="albumLightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+  <button id="albumCloseBtn" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
+  <button id="albumPrevBtn" class="absolute left-5 text-white text-3xl">&#10094;</button>
+  <img id="albumLightboxImage" class="max-h-[80%] max-w-[90%] rounded-lg shadow-lg">
+  <button id="albumNextBtn" class="absolute right-5 text-white text-3xl">&#10095;</button>
+</div>
+
+<script>
+  /* Albums dictionary (14 clients with sample images) */
+  const albums = {
+    "buccheri": [
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "greenliving": [
+      "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "sampoerna": [
+      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "fitnessfirst": [
+      "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1571019613914-85f342c1d4b1?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "walls": [
+      "https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1586201375761-83865001e17b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "bateeq": [
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "asgar": [
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "honeycreme": [
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1580910051076-c2705525f1c8?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "nawilis": [
+      "https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "chief": [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "lesfemmes": [
+      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "kidzania": [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "naughty": [
+      "https://images.unsplash.com/photo-1581291519195-ef11498d1cf5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556742208-999815fca738?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "buahhati": [
+      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1580281657525-74f47417e6a9?auto=format&fit=crop&w=1200&q=80"
+    ]
+  };
+
+  /* DOM elements */
+  const albumView = document.getElementById("album-view");
+  const photosView = document.getElementById("photos-view");
+  const photoGrid = document.getElementById("photo-grid");
+  const backBtn = document.getElementById("backBtn");
+
+  /* Album-lightbox elements (unique names) */
+  const albumLightbox = document.getElementById("albumLightbox");
+  const albumLightboxImage = document.getElementById("albumLightboxImage");
+  const albumCloseBtn = document.getElementById("albumCloseBtn");
+  const albumPrevBtn = document.getElementById("albumPrevBtn");
+  const albumNextBtn = document.getElementById("albumNextBtn");
+
+  let currentAlbum = [];
+  let currentIndex = 0;
+
+  /* wire album cards (open album) */
+  document.querySelectorAll(".album-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const albumKey = card.getAttribute("data-album");
+      openAlbum(albumKey);
+    });
+  });
+
+  function openAlbum(albumKey) {
+    if (!albums[albumKey]) return;
+    currentAlbum = albums[albumKey];
+    albumView.classList.add("hidden");
+    photosView.classList.remove("hidden");
+    photoGrid.innerHTML = "";
+
+    currentAlbum.forEach((src, idx) => {
+      const wrap = document.createElement("div");
+      wrap.className = "ratio-16-9";
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "gallery-img w-full h-full object-cover rounded-lg shadow-md cursor-pointer";
+      img.alt = `${albumKey} image ${idx+1}`;
+      img.addEventListener("click", () => openAlbumLightbox(idx));
+      wrap.appendChild(img);
+      photoGrid.appendChild(wrap);
+    });
+
+    // scroll to photos
+    photosView.scrollIntoView({ behavior: "smooth" });
+  }
+
+  backBtn.addEventListener("click", () => {
+    photosView.classList.add("hidden");
+    albumView.classList.remove("hidden");
+    currentAlbum = [];
+    currentIndex = 0;
+  });
+
+  /* album lightbox functions (isolated names) */
+  function openAlbumLightbox(index) {
+    currentIndex = index;
+    albumLightboxImage.src = currentAlbum[currentIndex];
+    albumLightbox.classList.remove("hidden");
+    albumLightbox.classList.add("flex");
+  }
+
+  function closeAlbumLightbox() {
+    albumLightbox.classList.add("hidden");
+    albumLightbox.classList.remove("flex");
+  }
+
+  function albumPrev() {
+    if (!currentAlbum.length) return;
+    currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
+    albumLightboxImage.src = currentAlbum[currentIndex];
+  }
+
+  function albumNext() {
+    if (!currentAlbum.length) return;
+    currentIndex = (currentIndex + 1) % currentAlbum.length;
+    albumLightboxImage.src = currentAlbum[currentIndex];
+  }
+
+  albumCloseBtn.addEventListener("click", closeAlbumLightbox);
+  albumPrevBtn.addEventListener("click", albumPrev);
+  albumNextBtn.addEventListener("click", albumNext);
+
+  albumLightbox.addEventListener("click", (e) => {
+    // close when clicking outside the image
+    if (e.target === albumLightbox) closeAlbumLightbox();
+  });
+
+  // Keyboard support for album lightbox only
+  document.addEventListener("keydown", (e) => {
+    if (!albumLightbox.classList.contains("hidden")) {
+      if (e.key === "ArrowLeft") albumPrev();
+      if (e.key === "ArrowRight") albumNext();
+      if (e.key === "Escape") closeAlbumLightbox();
+    }
+  });
+</script>
+<style>
+  /* Album grid container */
+  #project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-content: center; /* ✅ Center albums instead of left-aligned */
+  }
+
+  /* Album card */
+  .album {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .album:hover {
+    transform: scale(1.05);
+  }
+
+  /* Album image */
+  .album img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* Album name */
+  .album-name {
+    padding: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    background: #f9fafb;
+  }
+
+  /* Fullscreen modal */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+  }
+
+  .modal button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  .modal button:hover {
+    background: rgba(255,255,255,0.4);
+  }
+
+  .modal .prev { left: 2%; }
+  .modal .next { right: 2%; }
+  .modal .close {
+    top: 5%;
+    right: 5%;
+    font-size: 2.5rem;
+    transform: none;
+  }
+</style>
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-100">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-green-600 mb-12">Contact Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Address -->
+      <div class="bg-white shadow-lg rounded-lg p-8 hover:shadow-2xl transition duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a4 4 0 10-5.657 5.657L12 22l5.657-5.657z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <h3 class="text-xl font-semibold mb-2">Our Office</h3>
+        <p class="text-gray-600 mb-2">Jl. Raya Kranggan, RT.001/RW.004, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
+        <a href="https://maps.app.goo.gl/55RrE5YHjmUCJpKm8" 
+           target="_blank" 
+           class="text-green-600 font-semibold hover:underline">
+          📍 View on Google Maps
+        </a>
+      </div>
+
+      <!-- Phone -->
+      <div class="bg-white shadow-lg rounded-lg p-8 hover:shadow-2xl transition duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.518 4.553a1 1 0 01-.502 1.21l-2.257 1.129a11.042 11.042 0 005.516 5.516l1.129-2.257a1 1 0 011.21-.502l4.553 1.518A1 1 0 0121 18.72V22a2 2 0 01-2 2h-1C9.163 24 2 16.837 2 8V7a2 2 0 012-2z" />
+        </svg>
+        <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+        <p class="text-gray-600 mb-2">+62 859-2248-8682</p>
+        <a href="https://wa.me/6285922488682?text=Hello%20Prosphera Home%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank"
+           class="text-green-600 font-semibold hover:underline">
+          📞 Call Now
+        </a>
+      </div>
+
+      <!-- Email -->
+      <div class="bg-white shadow-lg rounded-lg p-8 hover:shadow-2xl transition duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l-4-4m4 4l-4 4m12-4h-4m0 0l4-4m-4 4l4 4" />
+        </svg>
+        <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+        <p class="text-gray-600 mb-2">Prospherahome.id@gmail.com</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prospherahome.id@gmail.com&su=Judul%20Email&body=Hello%20Prosphera Home%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank"
+           class="text-green-600 font-semibold hover:underline">
+          ✉️ Send Email
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-green-600 text-white py-6 text-center">
+    <p>&copy; 2025 ProspheraHome. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
+    <button id="closeLightbox" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
+    <button id="prevBtn" class="absolute left-5 text-white text-4xl">&#10094;</button>
+    <img id="lightboxImg" src="" class="max-h-[90%] max-w-[90%] object-contain rounded-lg shadow-lg">
+    <button id="nextBtn" class="absolute right-5 text-white text-4xl">&#10095;</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Hero slideshow
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    function showSlide(index) {
+      slides.forEach((s,i)=> s.style.opacity = (i===index?"1":"0"));
+    }
+    setInterval(()=> {
+      currentSlide = (currentSlide+1)%slides.length;
+      showSlide(currentSlide);
+    },4000);
+
+    // Gallery lightbox
+    const galleryImgs = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+
+    function openLightbox(index){
+      currentIndex = index;
+      lightboxImg.src = galleryImgs[index].src;
+      lightbox.classList.add('active');
+    }
+    function closeLightbox(){ lightbox.classList.remove('active'); }
+    function showPrev(){ currentIndex=(currentIndex-1+galleryImgs.length)%galleryImgs.length; lightboxImg.src=galleryImgs[currentIndex].src; }
+    function showNext(){ currentIndex=(currentIndex+1)%galleryImgs.length; lightboxImg.src=galleryImgs[currentIndex].src; }
+
+    galleryImgs.forEach((img,i)=> img.addEventListener('click',()=>openLightbox(i)));
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+  </script>
+  <!-- Floating Contact Radial Menu -->
+<div class="floating-menu">
+  <!-- Main Toggle Button -->
+  <button id="menu-toggle" class="float-btn main">
+    <i id="menu-icon" class="fas fa-comment-dots"></i>
+  </button>
+
+  <!-- Contact Icons -->
+  <div id="radial-menu" class="radial-menu">
+    <a href="https://wa.me/6287760817047?text=Hello%20Prosphera Home%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="float-btn whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://instagram.com/prosphera.home" target="_blank" class="float-btn instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://tiktok.com/@prosphera.home" target="_blank" class="float-btn tiktok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+</div>
+
+<style>
+  .floating-menu {
+    position: fixed;
+    display: inline-block;
+    bottom: 30px;
+    right: 25px;
+    z-index: 1000;
+  }
+  .float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    line-height: 55px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .main { background-color: #4caf50; } /* Green toggle */
+  .whatsapp { background-color: #25d366; }
+  .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+  .tiktok { background-color: #000; }
+
+  /* Radial Menu */
+  .radial-menu {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    transform: translate(-50%, -50%); /* center on main button */
+    width: 0;
+    height: 0;
+  }
+  .radial-menu a {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+  .radial-open .radial-menu a {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Quarter circle positioning */
+  .radial-open .radial-menu a:nth-child(1) { transform: translate(-85px, -53px); }    /* Left */
+  .radial-open .radial-menu a:nth-child(2) { transform: translate(-53px, -110px); } /* Diagonal */
+  .radial-open .radial-menu a:nth-child(3) { transform: translate(0, -150px); }    /* Up */
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menuIcon = document.getElementById('menu-icon');
+  const floatingMenu = document.querySelector('.floating-menu');
+
+  toggle.addEventListener('click', () => {
+    floatingMenu.classList.toggle('radial-open');
+    // Switch icon between chat and X
+    if (floatingMenu.classList.contains('radial-open')) {
+      menuIcon.classList.remove('fa-comment-dots');
+      menuIcon.classList.add('fa-times');
+    } else {
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-comment-dots');
+    }
+  });
+</script>
+
+<!-- FontAwesome (if not already included) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</body>
+</html>
